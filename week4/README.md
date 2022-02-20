@@ -1,0 +1,48 @@
+1.按照自己的构想，写一个项目满足基本的目录结构和工程，代码需包含对数据层、业务层、API注册，以及main函数对于服务的注册和启动，信号处理，使用Wire构建依赖。可以使用自己熟悉的框架。
+答：
+核心思想：约定大于文档
+- template
+    - certs [证书过程及最终文件，满足x509]
+    - cmd
+        - myapp [单独一个应用服务进行打包]
+            - main.go [<服务注册> cmd 启动文件 胶水代码]
+            - myapp
+        - myapp2
+            - main.go [<服务注册> cmd 启动文件]
+            - myapp2
+    - internal [私有程序和库代码]
+        - app
+            - myapp1
+                - README.md
+                - config
+                - biz [api -> biz，外部接口调用,probuf定义文件]
+                - data [<数据层> service -> data，数据库操作]
+                - service [<业务层> biz -> service，服务接口，供biz组装]
+                - server.go [服务常用变量，含初始化]
+                - wire.go [wire初始化依赖]
+                - internal [包内部私有方法]
+                - test
+            - myapp2
+                - biz [api -> biz，外部接口调用,probuf定义文件]
+                - data [<数据层> service -> data，数据库操作]
+                - service [<业务层> biz -> service，服务接口，供biz组装]
+                - server.go [服务常用变量，含初始化]
+                - wire.go [wire初始化依赖]
+                - internal [包内部私有方法]
+                - test
+    - pkg [外部工具包]
+        - cache
+            - memcache
+            - redis
+        - conf
+            - dns
+            - env
+            - flagvar 
+            - paladin
+        - database
+        - ...
+        - log
+        - util
+    - docs
+    - example
+    - tool
