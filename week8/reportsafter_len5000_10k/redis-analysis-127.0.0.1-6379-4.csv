@@ -1,0 +1,2 @@
+Key,Count,Size,NeverExpire,AvgTtl(excluded never expire)
+len5000_10k:*,10000,654.297 KB,10000,0
